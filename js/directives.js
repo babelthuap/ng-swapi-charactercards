@@ -24,8 +24,6 @@ app.directive('swapiPlanetsSelector', function() {
         pages => {
           let list = pages.reduce((a, b) => a.concat( b.data.results ), [])
                           .filter(p => p.residents.length >= $scope.minResidents);
-          console.log('list:', list)
-          
           $scope.planets = list;
           dataSvc.planets = list;
           window.location.replace('#');
@@ -94,43 +92,3 @@ app.directive('swapiResident', function() {
     }]
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

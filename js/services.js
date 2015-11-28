@@ -15,20 +15,3 @@ app.service('dataSvc', ['$http', function($http) {
     return $http.get('http://swapi.co/api/people/' + id + '/?format=json');
   }
 }]);
-
-
-
-// let getPlanetPages = [];
-// for (let i = 1; i <= NUM_PAGES; i++) {
-//   getPlanetPages.push( dataSvc.getPlanets(i) );
-// }
-
-// Promise.all(getPlanetPages).then(
-//   pages => {
-//     let list = pages.reduce((a, b) => a.concat( b.data.results ), [])
-//                     .filter(p => p.residents.length >= $scope.minResidents);
-//     console.log('list:', list)
-    
-//     $scope.planets = list;
-//     dataSvc.planets = list;
-//     window.location.replace('#');
