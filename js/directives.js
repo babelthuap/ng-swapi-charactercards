@@ -31,6 +31,7 @@ app.directive('swapiPlanetsSelector', function() {
       $scope.displayPlanet = function(i) {
         console.log('index:', i);
         $scope.showList = false;
+        
         // $emit 
       }
     }]
@@ -45,16 +46,19 @@ app.directive('swapiPlanet', function() {
       index: "@"
     },
     controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
-      // $scope.residents = [{id: 5}, {id: 68}, {id: 81}];
-      $scope.planets = dataSvc.planets;
-      setTimeout(function() {
+      $scope.planet;
+      $scope.residentIds;
+
+      function getPlanetInfo() {
         $scope.planet = dataSvc.planets[$scope.index];
         $scope.residentIds = dataSvc.planets[$scope.index].residents
-                                    .map(url => url.replace(/\D/g, ''));
+                                    .map(url => url.match(/\d+/)[0]);
 
         console.log('planet ' + $scope.index + ':', dataSvc.planets[$scope.index]);
         console.log('resident ids:', $scope.residentIds);
-      }, 3000);
+      }
+
+      setTimeout(getPlanetInfo, 3000);
     }]
   }
 });
