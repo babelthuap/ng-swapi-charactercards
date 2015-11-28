@@ -15,11 +15,13 @@ app.directive('swapiPlanetsSelector', function() {
 
       //make show/hide list of planets
 
-      var getPlanets = dataSvc.getPlanets();
+      let getPlanets = dataSvc.getPlanets();
       getPlanets.then(
         planets => {
-          $scope.planets = planets.data.results;
-          dataSvc.planets = planets.data.results;
+          let list = planets.data.results.filter(element =>
+            element.residents.length >= $scope.minResidents);
+          $scope.planets = list;
+          dataSvc.planets = list;
         },
         err => console.error(err)
       );
