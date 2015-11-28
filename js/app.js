@@ -1,10 +1,19 @@
 'use strict';
 
-var app = angular.module('swapiCardsApp', []);
+var app = angular.module('swapiCardsApp', ['ui.router']);
 
-app.controller('MainCtrl', ['$scope', function($scope) {
-  $scope.$on('displayPlanet', function(_, index) {
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/")
+
+  $stateProvider
+    .state('home', {
+      url: "/",
+    })
+}]);
+
+app.controller('MainCtrl', ['$scope', 'dataSvc', function($scope, dataSvc) {
+  $scope.$on('displayPlanet', (_, index) => {
     $scope.planetIndex = index;
     $scope.$broadcast('planetIndex', index);
-  })
+  });
 }]);

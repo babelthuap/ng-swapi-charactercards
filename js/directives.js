@@ -13,13 +13,22 @@ app.directive('swapiPlanetsSelector', function() {
       $scope.planets = dataSvc.planets;
       $scope.showList = false;
 
-      let getPlanets = dataSvc.getPlanets();
-      getPlanets.then(
-        planets => {
-          let list = planets.data.results.filter(element =>
-            element.residents.length >= $scope.minResidents);
+      const NUM_PAGES = 7;
+
+      let getPlanetPages = [];
+      for (let i = 1; i <= NUM_PAGES; i++) {
+        getPlanetPages.push( dataSvc.getPlanets(i) );
+      }
+
+      Promise.all(getPlanetPages).then(
+        pages => {
+          let list = pages.reduce((a, b) => a.concat( b.data.results ), [])
+                          .filter(p => p.residents.length >= $scope.minResidents);
+          console.log('list:', list)
+          
           $scope.planets = list;
           dataSvc.planets = list;
+          window.location.replace('#');
         },
         err => console.error(err)
       );
@@ -29,8 +38,6 @@ app.directive('swapiPlanetsSelector', function() {
       }
 
       $scope.displayPlanet = function(i) {
-        // console.log('index:', i);
-        // $scope.showList = false;
         $scope.$emit('displayPlanet', i);
       }
     }]
@@ -56,8 +63,6 @@ app.directive('swapiPlanet', function() {
         } catch (e) {
           console.error(e);
         }
-        // console.log('planet ' + $scope.index + ':', dataSvc.planets[$scope.index]);
-        // console.log('resident ids:', $scope.residentIds);
       }
 
       $scope.$on('planetIndex', getPlanetInfo)
