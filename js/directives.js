@@ -11,6 +11,7 @@ app.directive('swapiPlanetsSelector', function() {
     },
     controller: function($scope, dataSvc) {
       $scope.planets = dataSvc.planets;
+      $scope.showList = true;
 
       //make show/hide list of planets
 
@@ -22,6 +23,10 @@ app.directive('swapiPlanetsSelector', function() {
         },
         err => console.error(err)
       );
+
+      $scope.toggleShowList = function() {
+        $scope.showList = !$scope.showList;
+      }
     }
   }
 });

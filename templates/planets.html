@@ -1,4 +1,12 @@
 <div class="span12">
-  <h3>Planet List</h3>
-  {{planets}}
+  <h3>
+    Planet List
+    <button class="close" ng-click="toggleShowList()">show/hide</button>
+  </h3>
+  <h4 ng-hide="planets.length > 0" class="text-center">Loading...</h4>
+  <ul ng-show="showList && planets.length > 0">
+    <li ng-repeat="p in planets">
+      {{p.name}} -- <em>residents on file: {{p.residents.length}}</em>
+    </li>
+  </ul>
 </div>
