@@ -1,6 +1,8 @@
 <div class="span12">
-<h3>Alderaan</h3>
+<h3>Alderaan (planet {{id}})</h3>
 <ul>
-  <li ng-repeat="r in residents">{{r}}</li>
+  <li ng-repeat="r in residents">
+    {{r}} <swapi-resident id={{r.id}}></swapi-resident>
+  </li>
 </ul>
 </div>

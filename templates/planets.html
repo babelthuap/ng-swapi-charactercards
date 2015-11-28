@@ -7,7 +7,7 @@
   <ul ng-show="showList && planets.length > 0">
     <li ng-repeat="p in planets track by $index">
       <a ng-click="displayPlanet($index)">{{p.name}}</a> -- 
-      <em>residents on file: {{p.residents.length}}</em>
+      <em>{{p.residents.length}} residents on file</em>
     </li>
   </ul>
 </div>

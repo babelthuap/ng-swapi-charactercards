@@ -40,8 +40,64 @@ app.directive('swapiPlanet', function() {
   return {
     restrict: "AE",
     templateUrl: "templates/planet.html",
+    scope: {
+      id: "@"
+    },
     controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
-      $scope.residents = [5, 68, 81];
+      $scope.residents = [{id: 5}, {id: 68}, {id: 81}];
     }]
   }
 });
+
+app.directive('swapiResident', function() {
+  return {
+    restrict: "AE",
+    templateUrl: "templates/resident.html",
+    scope: {
+      id: "@"
+    },
+    controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
+      $scope.id;
+    }]
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
