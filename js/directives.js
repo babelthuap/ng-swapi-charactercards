@@ -29,10 +29,9 @@ app.directive('swapiPlanetsSelector', function() {
       }
 
       $scope.displayPlanet = function(i) {
-        console.log('index:', i);
-        $scope.showList = false;
-        
-        // $emit 
+        // console.log('index:', i);
+        // $scope.showList = false;
+        $scope.$emit('displayPlanet', i);
       }
     }]
   }
@@ -50,15 +49,18 @@ app.directive('swapiPlanet', function() {
       $scope.residentIds;
 
       function getPlanetInfo() {
-        $scope.planet = dataSvc.planets[$scope.index];
-        $scope.residentIds = dataSvc.planets[$scope.index].residents
-                                    .map(url => url.match(/\d+/)[0]);
-
-        console.log('planet ' + $scope.index + ':', dataSvc.planets[$scope.index]);
-        console.log('resident ids:', $scope.residentIds);
+        try {
+          $scope.planet = dataSvc.planets[$scope.index];
+          $scope.residentIds = dataSvc.planets[$scope.index].residents
+                                      .map(url => url.match(/\d+/)[0]);
+        } catch (e) {
+          console.error(e);
+        }
+        // console.log('planet ' + $scope.index + ':', dataSvc.planets[$scope.index]);
+        // console.log('resident ids:', $scope.residentIds);
       }
 
-      setTimeout(getPlanetInfo, 3000);
+      $scope.$on('planetIndex', getPlanetInfo)
     }]
   }
 });
