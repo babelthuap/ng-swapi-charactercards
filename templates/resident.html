@@ -1,1 +1,10 @@
 <p>RESIDENT {{id}}</p>
+<p ng-hide='character'>Loading...</p>
+<ul ng-show='character'>
+  <li><i>Name:</i> {{character.name}}</li>
+  <li><i>Height:</i> {{character.height}}</li>
+  <li><i>Gender:</i> {{character.gender}}</li>
+  <li><i>Birth Year:</i> {{character.birth_year}}</li>
+  <li><i>Hair Color:</i> {{character.hair_color}}</li>
+  <li><i>Eye Color:</i> {{character.eye_color}}</li>
+</ul>

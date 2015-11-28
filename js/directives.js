@@ -11,7 +11,7 @@ app.directive('swapiPlanetsSelector', function() {
     },
     controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
       $scope.planets = dataSvc.planets;
-      $scope.showList = true;
+      $scope.showList = false;
 
       let getPlanets = dataSvc.getPlanets();
       getPlanets.then(
@@ -30,6 +30,7 @@ app.directive('swapiPlanetsSelector', function() {
 
       $scope.displayPlanet = function(i) {
         console.log('index:', i);
+        $scope.showList = false;
         // $emit 
       }
     }]
@@ -58,6 +59,18 @@ app.directive('swapiResident', function() {
     },
     controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
       $scope.id;
+      $scope.residents = dataSvc.residents;
+
+      if ($scope.residents[$scope.id]) {
+        $scope.character = $scope.residents[$scope.id];
+      } else {
+        let getCharacter = dataSvc.getCharacter($scope.id);
+        getCharacter.then(res => {
+          $scope.character = res.data;
+          $scope.residents[$scope.id] = res.data;
+        },
+        err => console.error(err));
+      }
     }]
   }
 });
