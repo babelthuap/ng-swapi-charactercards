@@ -9,11 +9,9 @@ app.directive('swapiPlanetsSelector', function() {
     scope: {
       minResidents: "@minResidents"
     },
-    controller: function($scope, dataSvc) {
+    controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
       $scope.planets = dataSvc.planets;
       $scope.showList = true;
-
-      //make show/hide list of planets
 
       let getPlanets = dataSvc.getPlanets();
       getPlanets.then(
@@ -29,6 +27,21 @@ app.directive('swapiPlanetsSelector', function() {
       $scope.toggleShowList = function() {
         $scope.showList = !$scope.showList;
       }
-    }
+
+      $scope.displayPlanet = function(i) {
+        console.log('index:', i);
+        // $emit 
+      }
+    }]
+  }
+});
+
+app.directive('swapiPlanet', function() {
+  return {
+    restrict: "AE",
+    templateUrl: "templates/planet.html",
+    controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
+      $scope.residents = [5, 68, 81];
+    }]
   }
 });

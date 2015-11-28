@@ -5,8 +5,9 @@
   </h3>
   <h4 ng-hide="planets.length > 0" class="text-center">Loading...</h4>
   <ul ng-show="showList && planets.length > 0">
-    <li ng-repeat="p in planets">
-      {{p.name}} -- <em>residents on file: {{p.residents.length}}</em>
+    <li ng-repeat="p in planets track by $index">
+      <a ng-click="displayPlanet($index)">{{p.name}}</a> -- 
+      <em>residents on file: {{p.residents.length}}</em>
     </li>
   </ul>
 </div>
