@@ -1,10 +1,11 @@
-<p>RESIDENT {{id}}</p>
-<p ng-hide='character'>Loading...</p>
-<ul ng-show='character'>
-  <li><i>Name:</i> {{character.name}}</li>
-  <li><i>Height:</i> {{character.height}}</li>
-  <li><i>Gender:</i> {{character.gender}}</li>
-  <li><i>Birth Year:</i> {{character.birth_year}}</li>
-  <li><i>Hair Color:</i> {{character.hair_color}}</li>
-  <li><i>Eye Color:</i> {{character.eye_color}}</li>
-</ul>
+<div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <p ng-hide='character'>Loading...</p>
+  <h4>{{character.name}}</h4>
+  <ul ng-show='character'>
+    <li><i>Height:</i> {{character.height}}</li>
+    <li><i>Gender:</i> {{character.gender}}</li>
+    <li><i>Birth Year:</i> {{character.birth_year}}</li>
+    <li><i>Hair Color:</i> {{character.hair_color}}</li>
+    <li><i>Eye Color:</i> {{character.eye_color}}</li>
+  </ul>
+</div>

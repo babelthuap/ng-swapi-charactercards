@@ -1,10 +1,17 @@
 .span12 {
   background-color: white;
-  border-radius: 4px;
+  border-radius: 6px;
+  margin-left: 8px;
+  margin-right: 8px;
   padding-left: 16px;
   padding-right: 16px;
 }
 
 a {
   cursor: pointer;
+}
+
+.card {
+  border: 1px solid #000;
+  border-radius: 6px;
 }
