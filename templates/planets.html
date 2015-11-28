@@ -3,11 +3,15 @@
     Planet List
     <button class="close" ng-click="toggleShowList()">show/hide</button>
   </h3>
-  <h4 ng-hide="planets.length > 0" class="text-center">Loading...</h4>
-  <ul ng-show="showList && planets.length > 0">
-    <li ng-repeat="p in planets track by $index">
-      <a ng-click="displayPlanet($index)">{{p.name}}</a> -- 
-      <em>{{p.residents.length}} residents on file</em>
-    </li>
-  </ul>
+  <div ng-show="showList">
+    <div ng-hide="planets.length > 0">
+      <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" height="80" alt="Loading...">
+    </div>
+    <ul ng-show="planets.length > 0">
+      <li ng-repeat="p in planets track by $index">
+        <a ng-click="displayPlanet($index)">{{p.name}}</a> --
+        <em>{{p.residents.length}} residents on file</em>
+      </li>
+    </ul>
+  </div>
 </div>

@@ -1,5 +1,7 @@
 <div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3">
-  <p ng-hide='character'>Loading...</p>
+  <div ng-hide='character'>
+    <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" height="139" alt="Loading...">
+  </div>
   <h4>{{character.name}}</h4>
   <ul ng-show='character'>
     <li><i>Height:</i> {{character.height}}</li>
