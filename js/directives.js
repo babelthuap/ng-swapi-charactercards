@@ -42,10 +42,19 @@ app.directive('swapiPlanet', function() {
     restrict: "AE",
     templateUrl: "templates/planet.html",
     scope: {
-      id: "@"
+      index: "@"
     },
     controller: ['$scope', 'dataSvc', function($scope, dataSvc) {
-      $scope.residents = [{id: 5}, {id: 68}, {id: 81}];
+      // $scope.residents = [{id: 5}, {id: 68}, {id: 81}];
+      $scope.planets = dataSvc.planets;
+      setTimeout(function() {
+        $scope.planet = dataSvc.planets[$scope.index];
+        $scope.residentIds = dataSvc.planets[$scope.index].residents
+                                    .map(url => url.replace(/\D/g, ''));
+
+        console.log('planet ' + $scope.index + ':', dataSvc.planets[$scope.index]);
+        console.log('resident ids:', $scope.residentIds);
+      }, 3000);
     }]
   }
 });

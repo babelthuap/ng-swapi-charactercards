@@ -1,5 +1,5 @@
 <div class="span12">
-  <h3>Alderaan, planet id: {{id}}</h3>
-  <swapi-resident ng-repeat="r in residents" id={{r.id}}>
+  <h2>{{planet ? planet.name : ''}} (planet index: {{index}})</h2>
+  <swapi-resident ng-repeat="r in residentIds" id={{r}}>
   </swapi-resident>
 </div>
