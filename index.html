@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="swapiCardsApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SWAPI Cards</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.min.js"></script>
+  <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-controller="MainCtrl">
+  <div class="container">
+    <div class="jumbotron">
+      <div class="header row text-center">
+        <h2>SWAPI Character Cards</h2>
+        <em>by <a href="https://babelthuap.github.io/">Nicholas Neumann-Chun</a></em>
+      </div>
+      <hr>
+      <p>47 &times; 47 = {{47*47}}</p>
+      <swapi-planets-selector min-residents="3"></swapi-planets-selector>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/services.js"></script>
+</body>
+
+</html>
